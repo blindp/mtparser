@@ -1,5 +1,5 @@
 # Marine traffic parser
-Extract from vessel detail page latitude, longitude, timestamp and saves to database.
+Extract from vessel detail page - latitude, longitude, timestamp and saves to database.
 ## Usage
 
 ```bash
@@ -16,4 +16,11 @@ Create table:
 
 ```sql
 CREATE TABLE 'name_table' (ts int, lat decimal(10,8), lon decimal(11,8));
+```
+Create config-db.pl
+
+```perl
+db	=> 'name_database',
+user	=> 'login',
+pass	=> 'pass',
 ```
