@@ -1,6 +1,6 @@
 #Config file for connect database
-db			=> 'nd',
-user		=> 'laundry',
-pass		=> 'laundry',
+db			=> 'name_database',
+user		=> 'barbosa',
+pass		=> 'golden',
 
-create table spot (ts int, lat decimal(10,8), lon decimal(11,8));
+
