@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 #Marine traffic parser
 #Blind Pew <blind.pew96@gmail.com> GNU GPL v3
-
 use DBI;
 
 $tab = $ARGV[0];
@@ -22,25 +21,25 @@ else {
 while ($radek = <STDIN>) {
     chomp($radek);
     #uvnitr elementu <div>
-    if($radek =~/id="tabs-last-pos"/) {
+    if($radek =~/Reported ETA Received: /) {
         $inside = 1;
     }
     
     if($inside) {
         
         #hledani casoveho razitka
-        if($radek =~/data-time=/ and !$nalezeno) {
+        if($radek =~/<time datetime=/ and !$nalezeno) {
             if($dry) {
                 print $radek."\n\n\n----------------------------\n";
             }
-            $radek =~ /data-time="(.*?)"/;
+            $radek =~ /datetime="(.*?)"/;
             $ts = $1;
             $nalezeno = 1;
         }
         #hledani pozice
         if($radek =~/&deg;<\/a>/) {
             #print "$radek\n\n";
-            ($lon, $lat) = $radek =~ /:(.*?)\//g;       
+            ($lat, $lon) = $radek =~ /">(.*?)&deg; \/ (.*?)&deg;/;       
         }
     }
     
